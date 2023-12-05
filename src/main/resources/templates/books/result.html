@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+    table {
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    hr{
+      margin-bottom: 2rem;
+    }
+    th,
+    td {
+      padding: 0.35rem;
+      border: 2px solid rgb(136, 136, 136);
+      font-weight: 600;
+      background-color: rgb(241, 241, 241);
+    }
+    td span {
+      font-weight: 300;
+    }
+    div.container {
+      display: block;
+      padding: 4rem;
+      justify-content: center;
+      flex: 1;
+      max-width: 100%;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Livros</h1>
+      <hr>
+      <div th:each="bookItem : ${bookResults}">
+        <table>
+          <thead>
+            <td>ID</td>
+            <td>Título</td>
+            <td>Ano de publicação</td>
+            <td>Autor</td>
+          </thead>
+          <tr>
+            <td><span th:text="${bookItem.id}"></span></td>
+            <td><span th:text="${bookItem.title}"></span></td>
+            <td><span th:text="${bookItem.publishYear}"></span></td>
+            <td><span th:text="${bookItem.author}"></span></td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <p>Descrição:</p>
+              <br />
+              <span th:text="${bookItem.description}"></span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
